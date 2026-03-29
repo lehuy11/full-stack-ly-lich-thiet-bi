@@ -1,0 +1,2807 @@
+[
+  {
+    "id": "1",
+    "name_branch": "Cung Sài Gòn",
+    "children": [
+      {
+        "id": "1",
+        "name_system": "Hệ thống TTTH ga Sài Gòn",
+        "children": [
+          {
+            "id": "1",
+            "name": "Thiết bị thông tin",
+            "children": [
+              {
+                "id": "1",
+                "name": "Thiết bị thông tin số",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị thông tin tương tự",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Thiết bị tín hiệu",
+            "children": [
+              {
+                "id": "1",
+                "name": "Tín hiệu ra vào ga",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị quay ghi",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "3",
+                "name": "Thiết bị điều khiển",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "4",
+                "name": "Thiết bị xử lý liên khoá",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "5",
+                "name": "Thiết bị phát hiện tàu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "6",
+                "name": "Cáp tín hiệu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "7",
+                "name": "Nguồn điện",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Thiết bị khác",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "name_system": "Hệ thống TTTH ga Gò Vấp",
+        "children": [
+          {
+            "id": "1",
+            "name": "Thiết bị thông tin",
+            "children": [
+              {
+                "id": "1",
+                "name": "Thiết bị thông tin số",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị thông tin tương tự",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Thiết bị tín hiệu",
+            "children": [
+              {
+                "id": "1",
+                "name": "Tín hiệu ra vào ga",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị quay ghi",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "3",
+                "name": "Thiết bị điều khiển",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "4",
+                "name": "Thiết bị xử lý liên khoá",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "5",
+                "name": "Thiết bị phát hiện tàu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "6",
+                "name": "Cáp tín hiệu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "7",
+                "name": "Nguồn điện",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Thiết bị khác",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "name_system": "Hệ thống TTTH ga Bình Triệu",
+        "children": [
+          {
+            "id": "1",
+            "name": "Thiết bị thông tin",
+            "children": [
+              {
+                "id": "1",
+                "name": "Thiết bị thông tin số",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị thông tin tương tự",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Thiết bị tín hiệu",
+            "children": [
+              {
+                "id": "1",
+                "name": "Tín hiệu ra vào ga",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị quay ghi",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "3",
+                "name": "Thiết bị điều khiển",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "4",
+                "name": "Thiết bị xử lý liên khoá",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "5",
+                "name": "Thiết bị phát hiện tàu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "6",
+                "name": "Cáp tín hiệu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "7",
+                "name": "Nguồn điện",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Thiết bị khác",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name_branch": "Cung Gia Ray",
+    "children": [
+      {
+        "id": "1",
+        "name_system": "Hệ thống TTTH ga Gia Huynh",
+        "children": [
+          {
+            "id": "1",
+            "name": "Thiết bị thông tin",
+            "children": [
+              {
+                "id": "1",
+                "name": "Thiết bị thông tin số",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị thông tin tương tự",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Thiết bị tín hiệu",
+            "children": [
+              {
+                "id": "1",
+                "name": "Tín hiệu ra vào ga",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị quay ghi",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "3",
+                "name": "Thiết bị điều khiển",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "4",
+                "name": "Thiết bị xử lý liên khoá",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "5",
+                "name": "Thiết bị phát hiện tàu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "6",
+                "name": "Cáp tín hiệu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "7",
+                "name": "Nguồn điện",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Thiết bị khác",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "name_system": "Hệ thống TTTH ga Trản Táo",
+        "children": [
+          {
+            "id": "1",
+            "name": "Thiết bị thông tin",
+            "children": [
+              {
+                "id": "1",
+                "name": "Thiết bị thông tin số",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị thông tin tương tự",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Thiết bị tín hiệu",
+            "children": [
+              {
+                "id": "1",
+                "name": "Tín hiệu ra vào ga",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị quay ghi",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "3",
+                "name": "Thiết bị điều khiển",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "4",
+                "name": "Thiết bị xử lý liên khoá",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "5",
+                "name": "Thiết bị phát hiện tàu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "6",
+                "name": "Cáp tín hiệu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "7",
+                "name": "Nguồn điện",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Thiết bị khác",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "name_system": "Hệ thống TTTH ga Gia Ray",
+        "children": [
+          {
+            "id": "1",
+            "name": "Thiết bị thông tin",
+            "children": [
+              {
+                "id": "1",
+                "name": "Thiết bị thông tin số",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị thông tin tương tự",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Thiết bị tín hiệu",
+            "children": [
+              {
+                "id": "1",
+                "name": "Tín hiệu ra vào ga",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị quay ghi",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "3",
+                "name": "Thiết bị điều khiển",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "4",
+                "name": "Thiết bị xử lý liên khoá",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "5",
+                "name": "Thiết bị phát hiện tàu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "6",
+                "name": "Cáp tín hiệu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "7",
+                "name": "Nguồn điện",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Thiết bị khác",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name_branch": "Cung Long Khánh",
+    "children": [
+      {
+        "id": "1",
+        "name_system": "Hệ thống TTTH ga Bảo Chánh",
+        "children": [
+          {
+            "id": "1",
+            "name": "Thiết bị thông tin",
+            "children": [
+              {
+                "id": "1",
+                "name": "Thiết bị thông tin số",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị thông tin tương tự",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Thiết bị tín hiệu",
+            "children": [
+              {
+                "id": "1",
+                "name": "Tín hiệu ra vào ga",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị quay ghi",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "3",
+                "name": "Thiết bị điều khiển",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "4",
+                "name": "Thiết bị xử lý liên khoá",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "5",
+                "name": "Thiết bị phát hiện tàu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "6",
+                "name": "Cáp tín hiệu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "7",
+                "name": "Nguồn điện",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Thiết bị khác",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "name_system": "Hệ thống TTTH ga Long Khánh",
+        "children": [
+          {
+            "id": "1",
+            "name": "Thiết bị thông tin",
+            "children": [
+              {
+                "id": "1",
+                "name": "Thiết bị thông tin số",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị thông tin tương tự",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Thiết bị tín hiệu",
+            "children": [
+              {
+                "id": "1",
+                "name": "Tín hiệu ra vào ga",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị quay ghi",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "3",
+                "name": "Thiết bị điều khiển",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "4",
+                "name": "Thiết bị xử lý liên khoá",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "5",
+                "name": "Thiết bị phát hiện tàu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "6",
+                "name": "Cáp tín hiệu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "7",
+                "name": "Nguồn điện",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Thiết bị khác",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "name_system": "Hệ thống TTTH ga Dầu Giây",
+        "children": [
+          {
+            "id": "1",
+            "name": "Thiết bị thông tin",
+            "children": [
+              {
+                "id": "1",
+                "name": "Thiết bị thông tin số",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị thông tin tương tự",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Thiết bị tín hiệu",
+            "children": [
+              {
+                "id": "1",
+                "name": "Tín hiệu ra vào ga",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị quay ghi",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "3",
+                "name": "Thiết bị điều khiển",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "4",
+                "name": "Thiết bị xử lý liên khoá",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "5",
+                "name": "Thiết bị phát hiện tàu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "6",
+                "name": "Cáp tín hiệu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "7",
+                "name": "Nguồn điện",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Thiết bị khác",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "name_branch": "Cung Trảng Bom",
+    "children": [
+      {
+        "id": "1",
+        "name_system": "Hệ thống TTTH ga Hố Nai",
+        "children": [
+          {
+            "id": "1",
+            "name": "Thiết bị thông tin",
+            "children": [
+              {
+                "id": "1",
+                "name": "Thiết bị thông tin số",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị thông tin tương tự",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Thiết bị tín hiệu",
+            "children": [
+              {
+                "id": "1",
+                "name": "Tín hiệu ra vào ga",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị quay ghi",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "3",
+                "name": "Thiết bị điều khiển",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "4",
+                "name": "Thiết bị xử lý liên khoá",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "5",
+                "name": "Thiết bị phát hiện tàu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "6",
+                "name": "Cáp tín hiệu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "7",
+                "name": "Nguồn điện",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Thiết bị khác",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "name_system": "Hệ thống TTTH ga Trảng Bom",
+        "children": [
+          {
+            "id": "1",
+            "name": "Thiết bị thông tin",
+            "children": [
+              {
+                "id": "1",
+                "name": "Thiết bị thông tin số",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị thông tin tương tự",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Thiết bị tín hiệu",
+            "children": [
+              {
+                "id": "1",
+                "name": "Tín hiệu ra vào ga",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị quay ghi",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "3",
+                "name": "Thiết bị điều khiển",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "4",
+                "name": "Thiết bị xử lý liên khoá",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "5",
+                "name": "Thiết bị phát hiện tàu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "6",
+                "name": "Cáp tín hiệu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "7",
+                "name": "Nguồn điện",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Thiết bị khác",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "name_system": "Hệ thống TTTH ga Trung Hòa",
+        "children": [
+          {
+            "id": "1",
+            "name": "Thiết bị thông tin",
+            "children": [
+              {
+                "id": "1",
+                "name": "Thiết bị thông tin số",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị thông tin tương tự",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Thiết bị tín hiệu",
+            "children": [
+              {
+                "id": "1",
+                "name": "Tín hiệu ra vào ga",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị quay ghi",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "3",
+                "name": "Thiết bị điều khiển",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "4",
+                "name": "Thiết bị xử lý liên khoá",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "5",
+                "name": "Thiết bị phát hiện tàu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "6",
+                "name": "Cáp tín hiệu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "7",
+                "name": "Nguồn điện",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Thiết bị khác",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "name_branch": "Cung Sóng Thần",
+    "children": [
+      {
+        "id": "1",
+        "name_system": "Hệ thống TTTH ga Sóng Thần",
+        "children": [
+          {
+            "id": "1",
+            "name": "Thiết bị thông tin",
+            "children": [
+              {
+                "id": "1",
+                "name": "Thiết bị thông tin số",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị thông tin tương tự",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Thiết bị tín hiệu",
+            "children": [
+              {
+                "id": "1",
+                "name": "Tín hiệu ra vào ga",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị quay ghi",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "3",
+                "name": "Thiết bị điều khiển",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "4",
+                "name": "Thiết bị xử lý liên khoá",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "5",
+                "name": "Thiết bị phát hiện tàu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "6",
+                "name": "Cáp tín hiệu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "7",
+                "name": "Nguồn điện",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Thiết bị khác",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "name_system": "Hệ thống TTTH ga Dĩ An",
+        "children": [
+          {
+            "id": "1",
+            "name": "Thiết bị thông tin",
+            "children": [
+              {
+                "id": "1",
+                "name": "Thiết bị thông tin số",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị thông tin tương tự",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Thiết bị tín hiệu",
+            "children": [
+              {
+                "id": "1",
+                "name": "Tín hiệu ra vào ga",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị quay ghi",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "3",
+                "name": "Thiết bị điều khiển",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "4",
+                "name": "Thiết bị xử lý liên khoá",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "5",
+                "name": "Thiết bị phát hiện tàu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "6",
+                "name": "Cáp tín hiệu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "7",
+                "name": "Nguồn điện",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Thiết bị khác",
+            "children": []
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "name_system": "Hệ thống TTTH ga Biên Hòa",
+        "children": [
+          {
+            "id": "1",
+            "name": "Thiết bị thông tin",
+            "children": [
+              {
+                "id": "1",
+                "name": "Thiết bị thông tin số",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị thông tin tương tự",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "2",
+            "name": "Thiết bị tín hiệu",
+            "children": [
+              {
+                "id": "1",
+                "name": "Tín hiệu ra vào ga",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "name": "Thiết bị quay ghi",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "3",
+                "name": "Thiết bị điều khiển",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "4",
+                "name": "Thiết bị xử lý liên khoá",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "5",
+                "name": "Thiết bị phát hiện tàu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "6",
+                "name": "Cáp tín hiệu",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              },
+              {
+                "id": "7",
+                "name": "Nguồn điện",
+                "children": [
+                  {
+                    "id": "",
+                    "name": "",
+                    "code": "",
+                    "material": "",
+                    "number": "",
+                    "year": "",
+                    "expired": "",
+                    "status": "",
+                    "unit": "",
+                    "note": ""
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Thiết bị khác",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]
