@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  t3h-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: t3h-web
+    ports:
+      - "3000:80"
+    restart: unless-stopped
