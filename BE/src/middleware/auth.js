@@ -12,7 +12,7 @@ async function requireAuth(req, res, next) {
 
     const payload = jwt.verify(token, process.env.JWT_SECRET);
     const { rows } = await pool.query(
-      `SELECT id, username, role, display_name, branch_name, created_at, password_updated_at, last_login_at
+      `SELECT id, username, role, display_name, enterprise_name, branch_name, created_at, password_updated_at, last_login_at
        FROM users WHERE id = $1 AND status = 'active' LIMIT 1`,
       [payload.userId],
     );

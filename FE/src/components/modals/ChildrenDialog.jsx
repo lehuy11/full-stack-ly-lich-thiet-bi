@@ -157,6 +157,7 @@ export default function ChildrenDialog({
     onOpenAdd({
       mode: addMode,
       systemIndex,
+      enterpriseIndex: currentSystem.__enterpriseIndex,
       branchIndex: currentSystem.__branchIndex,
       parentPath: currentPath,
       title: currentTitle,
@@ -169,6 +170,7 @@ export default function ChildrenDialog({
     onOpenAdd({
       mode: "single-detail",
       systemIndex,
+      enterpriseIndex: currentSystem.__enterpriseIndex,
       branchIndex: currentSystem.__branchIndex,
       parentPath: [...currentPath, rowIndex],
       title: `${currentTitle} - ${rowData?.name || "Chi tiết tài sản"}`,
@@ -189,6 +191,7 @@ export default function ChildrenDialog({
     if (!onSaveDetails || !isDetailLevel || totalMismatch || hasInvalidQuantity) return;
 
     await onSaveDetails({
+      enterpriseIndex: currentSystem.__enterpriseIndex,
       branchIndex: currentSystem.__branchIndex,
       systemIndex,
       parentPath: currentPath,
@@ -202,6 +205,7 @@ export default function ChildrenDialog({
     if (!onDeleteDetail || !isDetailLevel) return;
 
     await onDeleteDetail({
+      enterpriseIndex: currentSystem.__enterpriseIndex,
       branchIndex: currentSystem.__branchIndex,
       systemIndex,
       parentPath: currentPath,

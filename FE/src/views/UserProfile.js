@@ -1,15 +1,5 @@
 import React from "react";
-import {
-  Alert,
-  Badge,
-  Button,
-  Card,
-  Col,
-  Container,
-  Form,
-  Row,
-  Table,
-} from "react-bootstrap";
+import { Alert, Badge, Button, Card, Col, Container, Form, Row, Table } from "react-bootstrap";
 import {
   createUserAccount,
   formatDateTime,
@@ -20,10 +10,7 @@ import {
   resetUserPassword,
   USERS_UPDATED_EVENT,
 } from "../utils/auth";
-import {
-  getBranchNames,
-  SYSTEMS_UPDATED_EVENT,
-} from "../utils/systemsStorage";
+import { getBranchNamesByEnterprise, getEnterpriseNames, SYSTEMS_UPDATED_EVENT } from "../utils/systemsStorage";
 import {
   formatPasswordResetTime,
   getPendingPasswordResetByUsername,
@@ -35,14 +22,15 @@ const initialForm = {
   username: "",
   displayName: "",
   role: "cungtruong",
+  enterprise: "",
   branch: "",
-  stations: "",
   password: "",
 };
 
 function UserProfile() {
   const currentUser = getCurrentUser();
-  const [branches, setBranches] = React.useState([]);
+  const [enterprises, setEnterprises] = React.useState([]);
+  const [branchOptions, setBranchOptions] = React.useState([]);
   const [users, setUsers] = React.useState([]);
   const [pendingRequests, setPendingRequests] = React.useState([]);
   const [form, setForm] = React.useState(initialForm);
@@ -54,51 +42,81 @@ function UserProfile() {
     const syncUsers = async () => {
       try {
         setUsers(await getAllUsers());
-      } catch (error) {
-        console.error(error);
+      } catch (syncError) {
+        console.error(syncError);
       }
     };
-    const syncBranches = async () => {
+
+    const syncOrganizations = async () => {
       try {
-        setBranches(await getBranchNames());
-      } catch (error) {
-        console.error(error);
+        const nextEnterprises = await getEnterpriseNames();
+        setEnterprises(nextEnterprises);
+      } catch (syncError) {
+        console.error(syncError);
       }
     };
+
     const syncRequests = async () => {
       try {
         setPendingRequests(await getPendingPasswordResetRequests());
-      } catch (error) {
-        console.error(error);
+      } catch (syncError) {
+        console.error(syncError);
       }
     };
 
     syncUsers();
-    syncBranches();
+    syncOrganizations();
     syncRequests();
 
     window.addEventListener(USERS_UPDATED_EVENT, syncUsers);
-    window.addEventListener(SYSTEMS_UPDATED_EVENT, syncBranches);
+    window.addEventListener(SYSTEMS_UPDATED_EVENT, syncOrganizations);
     window.addEventListener(PASSWORD_RESET_REQUESTS_UPDATED_EVENT, syncRequests);
     return () => {
       window.removeEventListener(USERS_UPDATED_EVENT, syncUsers);
-      window.removeEventListener(SYSTEMS_UPDATED_EVENT, syncBranches);
+      window.removeEventListener(SYSTEMS_UPDATED_EVENT, syncOrganizations);
       window.removeEventListener(PASSWORD_RESET_REQUESTS_UPDATED_EVENT, syncRequests);
     };
   }, []);
 
   React.useEffect(() => {
-    if (!form.branch && branches.length > 0) {
-      setForm((prev) => ({ ...prev, branch: branches[0] || "" }));
+    if (!form.enterprise && enterprises.length > 0 && form.role !== "admin") {
+      setForm((prev) => ({ ...prev, enterprise: enterprises[0] || "" }));
     }
-  }, [branches, form.branch]);
+  }, [enterprises, form.enterprise, form.role]);
 
-  const pendingRequestsByUsername = React.useMemo(() => {
-    return pendingRequests.reduce((accumulator, item) => {
+  React.useEffect(() => {
+    const syncBranches = async () => {
+      if (!form.enterprise || form.role === "admin") {
+        setBranchOptions([]);
+        return;
+      }
+      try {
+        const nextBranches = await getBranchNamesByEnterprise(form.enterprise);
+        setBranchOptions(nextBranches);
+      } catch (syncError) {
+        console.error(syncError);
+      }
+    };
+    syncBranches();
+  }, [form.enterprise, form.role]);
+
+  React.useEffect(() => {
+    if (form.role === "admin") return;
+    if (!form.branch && branchOptions.length > 0) {
+      setForm((prev) => ({ ...prev, branch: branchOptions[0] || "" }));
+      return;
+    }
+    if (form.branch && !branchOptions.includes(form.branch)) {
+      setForm((prev) => ({ ...prev, branch: branchOptions[0] || "" }));
+    }
+  }, [branchOptions, form.branch, form.role]);
+
+  const pendingRequestsByUsername = React.useMemo(() => (
+    pendingRequests.reduce((accumulator, item) => {
       accumulator[item.username] = item;
       return accumulator;
-    }, {});
-  }, [pendingRequests]);
+    }, {})
+  ), [pendingRequests]);
 
   const orderedUsers = React.useMemo(() => {
     const nextUsers = [...users];
@@ -116,18 +134,18 @@ function UserProfile() {
     setForm((prev) => {
       const next = { ...prev, [field]: value };
       if (field === "role" && value === "admin") {
+        next.enterprise = "";
         next.branch = "";
-        next.stations = "";
+      }
+      if (field === "enterprise") {
+        next.branch = "";
       }
       return next;
     });
   };
 
   const handleGeneratePassword = () => {
-    setForm((prev) => ({
-      ...prev,
-      password: generateUniquePassword(),
-    }));
+    setForm((prev) => ({ ...prev, password: generateUniquePassword() }));
   };
 
   const handleCreateUser = async (event) => {
@@ -143,20 +161,18 @@ function UserProfile() {
     }
 
     setUsers(await getAllUsers());
-    const nextBranches = await getBranchNames();
-    setBranches(nextBranches);
+    const nextEnterprises = await getEnterpriseNames();
+    setEnterprises(nextEnterprises);
 
     const stationsMessage = Array.isArray(result.addedStations) && result.addedStations.length > 0
-      ? ` Đã bổ sung ga: ${result.addedStations.join(", ")}.`
+      ? ` Ga thuộc cung này gồm: ${result.addedStations.join(", ")}.`
       : "";
 
-    setSuccess(
-      `Đã tạo tài khoản ${result.user.username} thành công. Mật khẩu hiện tại: ${result.password}.${stationsMessage}`,
-    );
+    setSuccess(`Đã tạo tài khoản ${result.user.username} thành công. Mật khẩu hiện tại: ${result.password}.${stationsMessage}`);
     setGeneratedPassword(result.password);
     setForm({
       ...initialForm,
-      branch: nextBranches[0] || "",
+      enterprise: nextEnterprises[0] || "",
     });
   };
 
@@ -205,105 +221,77 @@ function UserProfile() {
             <Card.Header>
               <Card.Title as="h4">Tạo tài khoản mới</Card.Title>
               <p className="card-category mb-0">
-                Admin có thể nhập tên cung, thêm các ga trực thuộc, và hệ thống sẽ tự tạo cấu
-                trúc mặc định cho từng ga như các ga hiện có.
+                Admin chọn xí nghiệp rồi chọn cung. Hệ thống sẽ tự gắn đúng các ga thuộc cung đó.
               </p>
             </Card.Header>
             <Card.Body>
               {error ? <Alert variant="danger">{error}</Alert> : null}
               {success ? <Alert variant="success">{success}</Alert> : null}
+              {generatedPassword ? <Alert variant="info">Mật khẩu vừa tạo: <strong>{generatedPassword}</strong></Alert> : null}
+
               <Form onSubmit={handleCreateUser}>
                 <Form.Group>
                   <Form.Label>Tên đăng nhập</Form.Label>
-                  <Form.Control
-                    value={form.username}
-                    onChange={handleFormChange("username")}
-                    placeholder="Ví dụ: longkhanh2"
-                  />
+                  <Form.Control value={form.username} onChange={handleFormChange("username")} placeholder="Ví dụ: longkhanh2" />
                 </Form.Group>
 
                 <Form.Group>
                   <Form.Label>Tên hiển thị</Form.Label>
-                  <Form.Control
-                    value={form.displayName}
-                    onChange={handleFormChange("displayName")}
-                    placeholder="Ví dụ: Cung trưởng Cung Long Khánh"
-                  />
+                  <Form.Control value={form.displayName} onChange={handleFormChange("displayName")} placeholder="Ví dụ: Cung trưởng Cung Long Khánh" />
                 </Form.Group>
 
                 <Row>
-                  <Col md="6">
+                  <Col md="4">
                     <Form.Group>
                       <Form.Label>Vai trò</Form.Label>
-                      <Form.Control
-                        as="select"
-                        value={form.role}
-                        onChange={handleFormChange("role")}
-                      >
+                      <Form.Control as="select" value={form.role} onChange={handleFormChange("role")}>
                         <option value="cungtruong">Cung trưởng</option>
                         <option value="admin">Admin</option>
                       </Form.Control>
                     </Form.Group>
                   </Col>
-                  <Col md="6">
+                  <Col md="4">
+                    <Form.Group>
+                      <Form.Label>Xí nghiệp</Form.Label>
+                      <Form.Control
+                        as="select"
+                        value={form.enterprise}
+                        onChange={handleFormChange("enterprise")}
+                        disabled={form.role === "admin"}
+                      >
+                        {enterprises.map((enterprise) => (
+                          <option key={enterprise} value={enterprise}>{enterprise}</option>
+                        ))}
+                      </Form.Control>
+                    </Form.Group>
+                  </Col>
+                  <Col md="4">
                     <Form.Group>
                       <Form.Label>Cung phụ trách</Form.Label>
                       <Form.Control
+                        as="select"
                         value={form.branch}
                         onChange={handleFormChange("branch")}
-                        placeholder="Ví dụ: Cung Biên Hòa"
-                        disabled={form.role === "admin"}
-                        list="branch-suggestions"
-                      />
-                      <datalist id="branch-suggestions">
-                        {branches.map((branch) => (
-                          <option key={branch} value={branch} />
+                        disabled={form.role === "admin" || branchOptions.length === 0}
+                      >
+                        {branchOptions.map((branch) => (
+                          <option key={branch} value={branch}>{branch}</option>
                         ))}
-                      </datalist>
-                      <Form.Text className="text-muted">
-                        Có thể nhập cung mới hoặc nhập lại cung đã có.
-                      </Form.Text>
+                      </Form.Control>
                     </Form.Group>
                   </Col>
                 </Row>
 
-                {form.role !== "admin" ? (
-                  <Form.Group>
-                    <Form.Label>Danh sách ga</Form.Label>
-                    <Form.Control
-                      as="textarea"
-                      rows={4}
-                      value={form.stations}
-                      onChange={handleFormChange("stations")}
-                      placeholder={"Mỗi ga một dòng hoặc ngăn cách bằng dấu phẩy\nVí dụ:\nHố Nai\nTrảng Bom\nTrung Hòa"}
-                    />
-                    <Form.Text className="text-muted">
-                      Nếu cung đã tồn tại, các ga mới sẽ được bổ sung thêm. Mỗi ga sẽ tự có sẵn
-                      các nhóm mặc định như Thiết bị thông tin, Thiết bị tín hiệu, Thiết bị khác...
-                    </Form.Text>
-                  </Form.Group>
-                ) : null}
-
                 <Form.Group>
                   <Form.Label>Mật khẩu</Form.Label>
                   <div className="d-flex gap-2" style={{ gap: 8 }}>
-                    <Form.Control
-                      value={form.password}
-                      onChange={handleFormChange("password")}
-                      placeholder="Bỏ trống để tự sinh mật khẩu"
-                    />
-                    <Button variant="secondary" onClick={handleGeneratePassword} type="button">
-                      Tự sinh
-                    </Button>
+                    <Form.Control value={form.password} onChange={handleFormChange("password")} placeholder="Bỏ trống để tự sinh mật khẩu" />
+                    <Button variant="secondary" onClick={handleGeneratePassword} type="button">Tự sinh</Button>
                   </div>
-                  <Form.Text className="text-muted">
-                    Mỗi tài khoản phải có mật khẩu khác nhau.
-                  </Form.Text>
+                  <Form.Text className="text-muted">Mỗi tài khoản phải có mật khẩu khác nhau.</Form.Text>
                 </Form.Group>
 
-                <Button className="btn-fill" variant="info" type="submit">
-                  Tạo tài khoản
-                </Button>
+                <Button className="btn-fill" variant="info" type="submit">Tạo tài khoản</Button>
               </Form>
             </Card.Body>
           </Card>
@@ -315,15 +303,10 @@ function UserProfile() {
               <Row className="align-items-center">
                 <Col>
                   <Card.Title as="h4">Danh sách tài khoản</Card.Title>
-                  <p className="card-category mb-0">
-                    Admin có thể cấp lại mật khẩu. Yêu cầu quên mật khẩu sẽ làm nút cấp lại đổi sang
-                    màu đỏ.
-                  </p>
+                  <p className="card-category mb-0">Admin có thể cấp lại mật khẩu. Yêu cầu quên mật khẩu sẽ làm nút cấp lại đổi sang màu đỏ.</p>
                 </Col>
                 <Col className="text-right" md="auto">
-                  <Badge variant={pendingRequests.length > 0 ? "danger" : "secondary"}>
-                    {pendingRequests.length} yêu cầu quên mật khẩu
-                  </Badge>
+                  <Badge variant={pendingRequests.length > 0 ? "danger" : "secondary"}>{pendingRequests.length} yêu cầu quên mật khẩu</Badge>
                 </Col>
               </Row>
             </Card.Header>
@@ -333,6 +316,7 @@ function UserProfile() {
                   <tr>
                     <th>Tên đăng nhập</th>
                     <th>Vai trò</th>
+                    <th>Xí nghiệp</th>
                     <th>Cung</th>
                     <th>Tạo lúc</th>
                     <th>Đổi mật khẩu</th>
@@ -343,44 +327,30 @@ function UserProfile() {
                 <tbody>
                   {orderedUsers.map((user) => {
                     const pendingRequest = pendingRequestsByUsername[user.username] || null;
-
                     return (
                       <tr key={user.username}>
                         <td>
                           <div className="font-weight-bold">{user.displayName}</div>
                           <div className="text-muted small">{user.username}</div>
-                          {pendingRequest ? (
-                            <div className="mt-1">
-                              <Badge variant="danger">Đang chờ cấp lại mật khẩu</Badge>
-                            </div>
-                          ) : null}
+                          {pendingRequest ? <div className="mt-1"><Badge variant="danger">Đang chờ cấp lại mật khẩu</Badge></div> : null}
                         </td>
-                        <td>
-                          <Badge variant={user.role === "admin" ? "danger" : "info"}>
-                            {getRoleLabel(user.role)}
-                          </Badge>
-                        </td>
+                        <td><Badge variant={user.role === "admin" ? "danger" : "info"}>{getRoleLabel(user.role)}</Badge></td>
+                        <td>{user.enterprise || "Toàn hệ thống"}</td>
                         <td>{user.branch || "Toàn hệ thống"}</td>
                         <td>{formatDateTime(user.createdAt) || "-"}</td>
                         <td>{formatDateTime(user.passwordUpdatedAt) || "-"}</td>
                         <td>
                           {pendingRequest ? (
-                            <div>
-                              <div className="text-danger font-weight-bold">Có yêu cầu mới</div>
-                              <div className="small text-muted">
-                                {formatPasswordResetTime(pendingRequest.requestedAt) || "-"}
-                              </div>
-                            </div>
+                            <>
+                              <div>{formatPasswordResetTime(pendingRequest.requestedAt)}</div>
+                              <div className="text-muted small">{pendingRequest.displayName || pendingRequest.username}</div>
+                            </>
                           ) : (
                             <span className="text-muted">Không có</span>
                           )}
                         </td>
                         <td className="text-right">
-                          <Button
-                            size="sm"
-                            variant={pendingRequest ? "danger" : "warning"}
-                            onClick={() => handleResetPassword(user.username)}
-                          >
+                          <Button variant={pendingRequest ? "danger" : "secondary"} size="sm" onClick={() => handleResetPassword(user.username)}>
                             {pendingRequest ? "Cấp lại ngay" : "Cấp lại mật khẩu"}
                           </Button>
                         </td>
@@ -391,28 +361,6 @@ function UserProfile() {
               </Table>
             </Card.Body>
           </Card>
-
-          {generatedPassword ? (
-            <Card className="mt-3">
-              <Card.Header>
-                <Card.Title as="h5">Mật khẩu vừa tạo / cấp lại</Card.Title>
-              </Card.Header>
-              <Card.Body>
-                <div
-                  style={{
-                    fontFamily: "monospace",
-                    fontSize: 18,
-                    background: "#f7f7f8",
-                    borderRadius: 8,
-                    padding: 12,
-                    wordBreak: "break-all",
-                  }}
-                >
-                  {generatedPassword}
-                </div>
-              </Card.Body>
-            </Card>
-          ) : null}
         </Col>
       </Row>
     </Container>

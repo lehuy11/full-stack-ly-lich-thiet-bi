@@ -1,3 +1,4 @@
+import { inferEnterpriseFromBranch } from "./organization";
 import { apiRequest, AUTH_TOKEN_STORAGE_KEY } from "./api";
 
 export const AUTH_STORAGE_KEY = "t3h_auth_user";
@@ -20,6 +21,7 @@ function sanitizeUser(user) {
     username: user.username,
     role: user.role,
     displayName: user.displayName || user.display_name || user.username,
+    enterprise: user.enterprise || user.enterprise_name || inferEnterpriseFromBranch(user.branch || user.branch_name || "") || null,
     branch: user.branch || user.branch_name || null,
     loginAt: user.loginAt || user.last_login_at || null,
     createdAt: user.createdAt || user.created_at || null,

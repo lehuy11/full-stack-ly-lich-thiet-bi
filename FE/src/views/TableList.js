@@ -40,14 +40,12 @@ function createEmptyDetail() {
   };
 }
 
-function addChildToPath(prevBranches, branchIndex, systemIndex, parentPath, newChild) {
-  const next = deepClone(prevBranches);
-
-  let current = next[branchIndex]?.children?.[systemIndex];
+function addChildToPath(prevOrganizations, enterpriseIndex, branchIndex, systemIndex, parentPath, newChild) {
+  const next = deepClone(prevOrganizations);
+  let current = next[enterpriseIndex]?.children?.[branchIndex]?.children?.[systemIndex];
   if (!current) return next;
 
   current.children = current.children || [];
-
   for (const idx of parentPath) {
     current = current.children[idx];
     if (!current) return next;
@@ -58,9 +56,9 @@ function addChildToPath(prevBranches, branchIndex, systemIndex, parentPath, newC
   return next;
 }
 
-function replaceChildrenAtPath(prevBranches, branchIndex, systemIndex, parentPath, nextChildren) {
-  const next = deepClone(prevBranches);
-  let current = next[branchIndex]?.children?.[systemIndex];
+function replaceChildrenAtPath(prevOrganizations, enterpriseIndex, branchIndex, systemIndex, parentPath, nextChildren) {
+  const next = deepClone(prevOrganizations);
+  let current = next[enterpriseIndex]?.children?.[branchIndex]?.children?.[systemIndex];
   if (!current) return next;
 
   for (const idx of parentPath) {
@@ -72,9 +70,9 @@ function replaceChildrenAtPath(prevBranches, branchIndex, systemIndex, parentPat
   return next;
 }
 
-function removeChildAtPath(prevBranches, branchIndex, systemIndex, parentPath, rowIndex) {
-  const next = deepClone(prevBranches);
-  let current = next[branchIndex]?.children?.[systemIndex];
+function removeChildAtPath(prevOrganizations, enterpriseIndex, branchIndex, systemIndex, parentPath, rowIndex) {
+  const next = deepClone(prevOrganizations);
+  let current = next[enterpriseIndex]?.children?.[branchIndex]?.children?.[systemIndex];
   if (!current) return next;
 
   for (const idx of parentPath) {
@@ -89,23 +87,41 @@ function removeChildAtPath(prevBranches, branchIndex, systemIndex, parentPath, r
   return next;
 }
 
-function buildAvailableBranches(branches, currentUser) {
-  return (branches || []).flatMap((branch, branchIndex) => {
+function buildVisibleEnterprises(organizations, currentUser) {
+  return (organizations || []).flatMap((enterprise, enterpriseIndex) => {
     if (
       currentUser?.role !== "admin" &&
-      currentUser?.branch &&
-      branch?.name_branch !== currentUser.branch
+      currentUser?.enterprise &&
+      enterprise?.name_enterprise !== currentUser.enterprise
     ) {
       return [];
     }
 
-    return [
-      {
-        ...deepClone(branch),
-        __branchIndex: branchIndex,
-      },
-    ];
+    const visibleBranches = (enterprise.children || []).filter((branch) => {
+      if (currentUser?.role === "admin") return true;
+      if (!currentUser?.branch) return true;
+      return branch?.name_branch === currentUser.branch;
+    });
+
+    if (!visibleBranches.length) return [];
+
+    return [{
+      ...deepClone(enterprise),
+      children: visibleBranches,
+      __enterpriseIndex: enterpriseIndex,
+    }];
   });
+}
+
+function buildCurrentBranches(enterprise) {
+  if (!enterprise) return [];
+
+  return (enterprise.children || []).map((branch, branchIndex) => ({
+    ...deepClone(branch),
+    __enterpriseIndex: enterprise.__enterpriseIndex,
+    __branchIndex: branchIndex,
+    __enterpriseName: enterprise.name_enterprise || "",
+  }));
 }
 
 function buildCurrentSystems(branch) {
@@ -113,9 +129,11 @@ function buildCurrentSystems(branch) {
 
   return (branch.children || []).map((system, systemIndex) => ({
     ...deepClone(system),
+    __enterpriseIndex: branch.__enterpriseIndex,
     __branchIndex: branch.__branchIndex,
     __systemIndex: systemIndex,
     __branchName: branch.name_branch || "",
+    __enterpriseName: branch.__enterpriseName || "",
   }));
 }
 
@@ -131,15 +149,11 @@ function getNodeByPath(system, path = []) {
   return current;
 }
 
-function toQuantity(value) {
-  const quantity = Number.parseInt(String(value || "0").replace(/\D+/g, ""), 10);
-  return Number.isFinite(quantity) ? quantity : 0;
-}
-
 export default function TableList() {
   const currentUser = getCurrentUser();
-  const [branches, setBranches] = useState([]);
+  const [organizations, setOrganizations] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [selectedEnterpriseName, setSelectedEnterpriseName] = useState("");
   const [selectedBranchName, setSelectedBranchName] = useState("");
   const [selectedSystemId, setSelectedSystemId] = useState("");
 
@@ -154,19 +168,25 @@ export default function TableList() {
     setToast({ open: true, severity, message });
   };
 
-  const availableBranches = useMemo(
-    () => buildAvailableBranches(branches, currentUser),
-    [branches, currentUser],
+  const visibleEnterprises = useMemo(
+    () => buildVisibleEnterprises(organizations, currentUser),
+    [organizations, currentUser],
+  );
+
+  const selectedEnterprise = useMemo(() => {
+    if (!visibleEnterprises.length) return null;
+    return visibleEnterprises.find((item) => item.name_enterprise === selectedEnterpriseName) || visibleEnterprises[0];
+  }, [visibleEnterprises, selectedEnterpriseName]);
+
+  const currentBranches = useMemo(
+    () => buildCurrentBranches(selectedEnterprise),
+    [selectedEnterprise],
   );
 
   const selectedBranch = useMemo(() => {
-    if (!availableBranches.length) return null;
-
-    return (
-      availableBranches.find((branch) => branch.name_branch === selectedBranchName) ||
-      availableBranches[0]
-    );
-  }, [availableBranches, selectedBranchName]);
+    if (!currentBranches.length) return null;
+    return currentBranches.find((item) => item.name_branch === selectedBranchName) || currentBranches[0];
+  }, [currentBranches, selectedBranchName]);
 
   const currentSystems = useMemo(
     () => buildCurrentSystems(selectedBranch),
@@ -175,63 +195,64 @@ export default function TableList() {
 
   const selectedSystem = useMemo(() => {
     if (!currentSystems.length) return null;
-
-    return (
-      currentSystems.find((system) => String(system.id) === String(selectedSystemId)) ||
-      currentSystems[0]
-    );
+    return currentSystems.find((item) => String(item.id) === String(selectedSystemId)) || currentSystems[0];
   }, [currentSystems, selectedSystemId]);
 
   useEffect(() => {
-    const syncBranches = async () => {
+    const syncOrganizations = async () => {
       try {
-        const nextBranches = await loadBranchesData();
-        setBranches(nextBranches);
+        const nextOrganizations = await loadBranchesData();
+        setOrganizations(nextOrganizations);
         setIsLoaded(true);
       } catch (error) {
         console.error(error);
       }
     };
 
-    syncBranches();
-    window.addEventListener("t3h-systems-updated", syncBranches);
-
+    syncOrganizations();
+    window.addEventListener("t3h-systems-updated", syncOrganizations);
     return () => {
-      window.removeEventListener("t3h-systems-updated", syncBranches);
+      window.removeEventListener("t3h-systems-updated", syncOrganizations);
     };
   }, []);
 
   useEffect(() => {
     if (!isLoaded) return;
-
     const persist = async () => {
       try {
-        await saveBranchesData(branches);
+        await saveBranchesData(organizations);
       } catch (error) {
         console.error(error);
       }
     };
-
     persist();
-  }, [branches, isLoaded]);
+  }, [organizations, isLoaded]);
 
   useEffect(() => {
-    if (!availableBranches.length) {
+    if (!visibleEnterprises.length) {
+      setSelectedEnterpriseName("");
+      return;
+    }
+    if (!visibleEnterprises.some((item) => item.name_enterprise === selectedEnterpriseName)) {
+      setSelectedEnterpriseName(visibleEnterprises[0].name_enterprise);
+    }
+  }, [visibleEnterprises, selectedEnterpriseName]);
+
+  useEffect(() => {
+    if (!currentBranches.length) {
       setSelectedBranchName("");
       return;
     }
-
-    if (!availableBranches.some((branch) => branch.name_branch === selectedBranchName)) {
-      setSelectedBranchName(availableBranches[0].name_branch);
+    if (!currentBranches.some((item) => item.name_branch === selectedBranchName)) {
+      setSelectedBranchName(currentBranches[0].name_branch);
     }
-  }, [availableBranches, selectedBranchName]);
+  }, [currentBranches, selectedBranchName]);
 
   useEffect(() => {
     if (!currentSystems.length) {
       setSelectedSystemId("");
       return;
     }
-
     if (!currentSystems.some((system) => String(system.id) === String(selectedSystemId))) {
       setSelectedSystemId(String(currentSystems[0].id || ""));
     }
@@ -241,15 +262,15 @@ export default function TableList() {
     if (!selectedSystem) return;
 
     setChildrenContext({
+      enterpriseIndex: selectedSystem.__enterpriseIndex,
+      branchIndex: selectedSystem.__branchIndex,
       systemIndex: selectedSystem.__systemIndex,
-      branchSystemIndex: currentSystems.findIndex(
-        (item) => item.__systemIndex === selectedSystem.__systemIndex,
-      ),
+      branchSystemIndex: currentSystems.findIndex((item) => item.__systemIndex === selectedSystem.__systemIndex),
       rootPath: [rowIndex],
       rootTitle:
         currentUser?.role === "admin"
-          ? `${selectedSystem.__branchName} - ${selectedSystem.name_system} - ${rowData.name}`
-          : `${selectedSystem.name_system} - ${rowData.name}`,
+          ? `${selectedSystem.__enterpriseName} - ${selectedSystem.__branchName} - ${selectedSystem.name_system} - ${rowData.name}`
+          : `${selectedSystem.__branchName} - ${selectedSystem.name_system} - ${rowData.name}`,
     });
 
     setOpenChildren(true);
@@ -258,10 +279,10 @@ export default function TableList() {
   const handleOpenSharedAdd = () => {
     setAddContext({
       mode: "shared-category",
-      currentSystemIndex: currentSystems.findIndex(
-        (item) => item.__systemIndex === selectedSystem?.__systemIndex,
-      ),
+      currentSystemIndex: currentSystems.findIndex((item) => item.__systemIndex === selectedSystem?.__systemIndex),
+      enterpriseIndex: selectedBranch?.__enterpriseIndex,
       branchIndex: selectedBranch?.__branchIndex,
+      enterpriseName: selectedEnterprise?.name_enterprise,
       branchName: selectedBranch?.name_branch,
     });
     setOpenAdd(true);
@@ -286,31 +307,19 @@ export default function TableList() {
     if (!addContext) return;
 
     if (addContext.mode === "shared-category") {
-      const newNode = {
-        id: payload.id,
-        name: payload.name,
-        children: [],
-      };
+      const newNode = { id: payload.id, name: payload.name, children: [] };
+      const targetVisibleIndexes = payload.stationMode === "all" ? currentSystems.map((_, idx) => idx) : payload.selectedStations || [];
 
-      const targetVisibleIndexes =
-        payload.stationMode === "all"
-          ? currentSystems.map((_, idx) => idx)
-          : payload.selectedStations || [];
-
-      setBranches((prev) => {
+      setOrganizations((prev) => {
         const next = deepClone(prev);
-
         targetVisibleIndexes.forEach((visibleIndex) => {
           const target = currentSystems[visibleIndex];
           if (!target) return;
-
-          const systemNode = next[target.__branchIndex]?.children?.[target.__systemIndex];
+          const systemNode = next[target.__enterpriseIndex]?.children?.[target.__branchIndex]?.children?.[target.__systemIndex];
           if (!systemNode) return;
-
           systemNode.children = systemNode.children || [];
           systemNode.children.push(deepClone(newNode));
         });
-
         return next;
       });
 
@@ -319,20 +328,10 @@ export default function TableList() {
     }
 
     if (addContext.mode === "single-category-with-template") {
-      const newNode = {
-        id: payload.id,
-        name: payload.name,
-        children: [createEmptyDetail()],
-      };
+      const newNode = { id: payload.id, name: payload.name, children: [createEmptyDetail()] };
 
-      setBranches((prev) =>
-        addChildToPath(
-          prev,
-          addContext.branchIndex,
-          addContext.systemIndex,
-          addContext.parentPath,
-          newNode,
-        ),
+      setOrganizations((prev) =>
+        addChildToPath(prev, addContext.enterpriseIndex, addContext.branchIndex, addContext.systemIndex, addContext.parentPath, newNode),
       );
 
       handleCloseAdd();
@@ -353,24 +352,19 @@ export default function TableList() {
         status: payload.status,
       };
 
-      const branchName = branches?.[addContext.branchIndex]?.name_branch || selectedBranch?.name_branch || "";
-      const stationNode = branches?.[addContext.branchIndex]?.children?.[addContext.systemIndex] || selectedSystem;
+      const enterpriseName = organizations?.[addContext.enterpriseIndex]?.name_enterprise || selectedEnterprise?.name_enterprise || "";
+      const branchName = organizations?.[addContext.enterpriseIndex]?.children?.[addContext.branchIndex]?.name_branch || selectedBranch?.name_branch || "";
+      const stationNode = organizations?.[addContext.enterpriseIndex]?.children?.[addContext.branchIndex]?.children?.[addContext.systemIndex] || selectedSystem;
       const stationName = stationNode?.name_system || "";
       const parentNode = getNodeByPath(stationNode, addContext.parentPath || []);
       const categoryName = parentNode?.name || addContext.title || "";
 
-      setBranches((prev) =>
-        addChildToPath(
-          prev,
-          addContext.branchIndex,
-          addContext.systemIndex,
-          addContext.parentPath,
-          newDetail,
-        ),
+      setOrganizations((prev) =>
+        addChildToPath(prev, addContext.enterpriseIndex, addContext.branchIndex, addContext.systemIndex, addContext.parentPath, newDetail),
       );
 
       void logAssetCreated({
-        branchName,
+        branchName: `${enterpriseName} / ${branchName}`,
         stationName,
         categoryName,
         assetName: payload.name,
@@ -384,28 +378,29 @@ export default function TableList() {
     }
   };
 
-  const handleSaveDetails = async ({ branchIndex, systemIndex, parentPath, items, originalTotal, editedTotal }) => {
+  const handleSaveDetails = async ({ enterpriseIndex, branchIndex, systemIndex, parentPath, items, originalTotal, editedTotal }) => {
     if (editedTotal !== originalTotal) {
       showToast("Không thể lưu vì tổng số lượng sau chỉnh sửa phải bằng tổng ban đầu.", "error");
       return;
     }
 
-    setBranches((prev) => replaceChildrenAtPath(prev, branchIndex, systemIndex, parentPath, items));
+    setOrganizations((prev) => replaceChildrenAtPath(prev, enterpriseIndex, branchIndex, systemIndex, parentPath, items));
     showToast("Đã cập nhật tình trạng và số lượng thiết bị.", "success");
   };
 
-  const handleDeleteDetail = async ({ branchIndex, systemIndex, parentPath, rowIndex, detail }) => {
-    const branchName = branches?.[branchIndex]?.name_branch || "";
-    const stationNode = branches?.[branchIndex]?.children?.[systemIndex];
+  const handleDeleteDetail = async ({ enterpriseIndex, branchIndex, systemIndex, parentPath, rowIndex, detail }) => {
+    const enterpriseName = organizations?.[enterpriseIndex]?.name_enterprise || "";
+    const branchName = organizations?.[enterpriseIndex]?.children?.[branchIndex]?.name_branch || "";
+    const stationNode = organizations?.[enterpriseIndex]?.children?.[branchIndex]?.children?.[systemIndex];
     const stationName = stationNode?.name_system || "";
     const parentNode = getNodeByPath(stationNode, parentPath || []);
     const categoryName = parentNode?.name || childrenContext?.rootTitle || "";
 
-    setBranches((prev) => removeChildAtPath(prev, branchIndex, systemIndex, parentPath, rowIndex));
+    setOrganizations((prev) => removeChildAtPath(prev, enterpriseIndex, branchIndex, systemIndex, parentPath, rowIndex));
 
     try {
       await logAssetDeleted({
-        branchName,
+        branchName: `${enterpriseName} / ${branchName}`,
         stationName,
         categoryName,
         assetName: detail?.name,
@@ -420,7 +415,7 @@ export default function TableList() {
     showToast(`Đã xóa chi tiết tài sản "${detail?.name || ""}".`, "warning");
   };
 
-  if (availableBranches.length === 0) {
+  if (visibleEnterprises.length === 0) {
     return (
       <Card>
         <CardContent>
@@ -435,13 +430,25 @@ export default function TableList() {
       <Box sx={{ width: "100%" }}>
         <Card sx={{ mb: 3 }}>
           <CardContent>
-            <Stack
-              direction={{ xs: "column", md: "row" }}
-              spacing={2}
-              justifyContent="space-between"
-              alignItems={{ xs: "stretch", md: "center" }}
-            >
+            <Stack direction={{ xs: "column", md: "row" }} spacing={2} justifyContent="space-between" alignItems={{ xs: "stretch", md: "center" }}>
               <Stack direction={{ xs: "column", md: "row" }} spacing={2} sx={{ flex: 1 }}>
+                <FormControl fullWidth sx={{ minWidth: 220 }}>
+                  <InputLabel id="enterprise-select-label">Chọn xí nghiệp</InputLabel>
+                  <Select
+                    labelId="enterprise-select-label"
+                    value={selectedEnterprise?.name_enterprise || ""}
+                    label="Chọn xí nghiệp"
+                    onChange={(event) => setSelectedEnterpriseName(event.target.value)}
+                    disabled={currentUser?.role !== "admin"}
+                  >
+                    {visibleEnterprises.map((enterprise) => (
+                      <MenuItem key={enterprise.id || enterprise.name_enterprise} value={enterprise.name_enterprise}>
+                        {enterprise.name_enterprise}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+
                 <FormControl fullWidth sx={{ minWidth: 220 }}>
                   <InputLabel id="branch-select-label">Chọn cung</InputLabel>
                   <Select
@@ -449,9 +456,9 @@ export default function TableList() {
                     value={selectedBranch?.name_branch || ""}
                     label="Chọn cung"
                     onChange={(event) => setSelectedBranchName(event.target.value)}
-                    disabled={currentUser?.role !== "admin"}
+                    disabled={!currentBranches.length || currentUser?.role !== "admin"}
                   >
-                    {availableBranches.map((branch) => (
+                    {currentBranches.map((branch) => (
                       <MenuItem key={branch.id || branch.name_branch} value={branch.name_branch}>
                         {branch.name_branch}
                       </MenuItem>
@@ -489,36 +496,19 @@ export default function TableList() {
         {selectedSystem ? (
           <Card>
             <CardContent>
-              <Stack
-                direction={{ xs: "column", sm: "row" }}
-                justifyContent="space-between"
-                alignItems={{ xs: "flex-start", sm: "center" }}
-                spacing={2}
-                sx={{ mb: 2 }}
-              >
+              <Stack direction={{ xs: "column", sm: "row" }} justifyContent="space-between" alignItems={{ xs: "flex-start", sm: "center" }} spacing={2} sx={{ mb: 2 }}>
                 <Box>
                   <Typography variant="h6">{selectedSystem.name_system}</Typography>
                   <Typography variant="body2" color="text.secondary">
-                    {selectedSystem.__branchName}
+                    {selectedSystem.__enterpriseName} / {selectedSystem.__branchName}
                   </Typography>
                 </Box>
               </Stack>
 
-              <DataTable
-                value={selectedSystem.children || []}
-                emptyMessage="Không có dữ liệu"
-                responsiveLayout="scroll"
-              >
+              <DataTable value={selectedSystem.children || []} emptyMessage="Không có dữ liệu" responsiveLayout="scroll">
                 <Column field="id" header="ID" />
                 <Column field="name" header="Danh mục" />
-                <Column
-                  header="Hành động"
-                  body={(rowData, options) => (
-                    <ActionButtons
-                      onView={() => handleOpenChildren(rowData, options.rowIndex)}
-                    />
-                  )}
-                />
+                <Column header="Hành động" body={(rowData, options) => (<ActionButtons onView={() => handleOpenChildren(rowData, options.rowIndex)} />)} />
               </DataTable>
             </CardContent>
           </Card>
@@ -545,21 +535,10 @@ export default function TableList() {
           allowDeleteAsset={canDeleteAsset(currentUser)}
         />
 
-        <AddItemDialog
-          open={openAdd}
-          onClose={handleCloseAdd}
-          onConfirm={handleConfirmAdd}
-          context={addContext}
-          systems={currentSystems}
-        />
+        <AddItemDialog open={openAdd} onClose={handleCloseAdd} onConfirm={handleConfirmAdd} context={addContext} systems={currentSystems} />
       </Box>
 
-      <AppSnackbar
-        open={toast.open}
-        severity={toast.severity}
-        message={toast.message}
-        onClose={() => setToast((prev) => ({ ...prev, open: false }))}
-      />
+      <AppSnackbar open={toast.open} severity={toast.severity} message={toast.message} onClose={() => setToast((prev) => ({ ...prev, open: false }))} />
     </>
   );
 }
