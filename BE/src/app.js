@@ -144,7 +144,7 @@ app.get('/api/users', requireAuth, requireRole(['admin']), async (_req, res) => 
   return success(res, { data: rows.map(sanitizeUser) });
 });
 
-app.get('/api/users/find', async (req, res) => {
+app.get('/api/users/find', requireAuth, requireRole(['admin']), async (req, res) => {
   const username = String(req.query?.username || '').trim();
   if (!username) {
     return failure(res, 'Thiếu tên đăng nhập cần tìm.');
