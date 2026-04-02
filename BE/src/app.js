@@ -16,7 +16,12 @@ const { normalizeEnterpriseName, normalizeBranchName, inferEnterpriseFromBranch 
 const { generateUniquePassword } = require('./utils/passwords');
 
 const app = express();
-app.use(cors({ origin: process.env.CORS_ORIGIN?.split(',').map((item) => item.trim()) || true, credentials: false }));
+const allowedOrigins = String(process.env.CORS_ORIGIN || '')
+  .split(',')
+  .map((item) => item.trim())
+  .filter(Boolean);
+
+app.use(cors({ origin: allowedOrigins.length > 0 ? allowedOrigins : true, credentials: false }));
 app.use(express.json({ limit: '10mb' }));
 app.use(morgan('dev'));
 
