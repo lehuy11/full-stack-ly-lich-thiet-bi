@@ -4,7 +4,7 @@
 Tạo file `.env` từ `.env.example`:
 
 ```env
-REACT_APP_API_URL=http://localhost:4000/api
+https://t3h-backend-api.onrender.com
 ```
 
 ## 2. Những file đã đổi
