@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: t3h-backend-api
+    runtime: node
+    rootDir: BE
+    region: singapore
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: t3h-assets-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        sync: false
+
+databases:
+  - name: t3h-assets-db
+    region: singapore
+    plan: free
+    databaseName: t3h_assets
+    ipAllowList: []
