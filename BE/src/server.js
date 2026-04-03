@@ -1,5 +1,6 @@
-const { app } = require('./app');
-const { initDatabase } = require('./db');
+require("dotenv").config();
+const { app } = require("./app");
+const { initDatabase } = require("./db");
 
 const requiredEnv = ['DATABASE_URL', 'JWT_SECRET'];
 const missingEnv = requiredEnv.filter((key) => !String(process.env[key] || '').trim());
@@ -16,14 +17,25 @@ if (process.env.NODE_ENV === 'production' && !String(process.env.CORS_ORIGIN || 
 
 const port = Number(process.env.PORT || 4000);
 
+function assertRequiredEnv() {
+  const missing = ["DATABASE_URL", "JWT_SECRET"].filter(
+    (key) => !String(process.env[key] || "").trim(),
+  );
+
+  if (missing.length > 0) {
+    throw new Error(`Thiếu biến môi trường bắt buộc: ${missing.join(", ")}`);
+  }
+}
+
 (async () => {
   try {
+    assertRequiredEnv();
     await initDatabase();
     app.listen(port, () => {
       console.log(`T3H backend API đang chạy trên cổng ${port}`);
     });
   } catch (error) {
-    console.error('Không thể khởi tạo cơ sở dữ liệu:', error);
+    console.error("Không thể khởi tạo cơ sở dữ liệu:", error);
     process.exit(1);
   }
 })();

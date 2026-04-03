@@ -2,12 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Redirect, useHistory, useLocation } from "react-router-dom";
 import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
 
-import {
-  findUserAccount,
-  getCurrentUser,
-  login,
-  refreshCurrentUser,
-} from "../utils/auth";
+import { getCurrentUser, login, refreshCurrentUser } from "../utils/auth";
 import { createPasswordResetRequest } from "../utils/passwordResetRequests";
 import AppSnackbar from "../components/Feedback/AppSnackbar";
 
@@ -18,7 +13,11 @@ export default function Login() {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [notice, setNotice] = useState({ open: false, severity: "info", message: "" });
+  const [notice, setNotice] = useState({
+    open: false,
+    severity: "info",
+    message: "",
+  });
 
   const openNotice = (message, severity = "info") => {
     setNotice({ open: true, severity, message });
@@ -38,7 +37,10 @@ export default function Login() {
 
   useEffect(() => {
     const handleAuthExpired = () => {
-      openNotice("Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.", "warning");
+      openNotice(
+        "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.",
+        "warning",
+      );
     };
 
     window.addEventListener("t3h-auth-expired", handleAuthExpired);
@@ -61,38 +63,27 @@ export default function Login() {
     history.replace(redirectTo);
   };
 
-  const handleForgotPassword = async () => {
-    const normalizedUsername = String(username || "").trim();
-    if (!normalizedUsername) {
-      openNotice("Nhập tên đăng nhập trước khi gửi yêu cầu quên mật khẩu.", "warning");
-      return;
-    }
+const handleForgotPassword = async () => {
+  const normalizedUsername = String(username || "").trim();
+  if (!normalizedUsername) {
+    openNotice("Nhập tên đăng nhập trước khi gửi yêu cầu quên mật khẩu.", "warning");
+    return;
+  }
 
-    const matchedUser = await findUserAccount(normalizedUsername);
-    if (!matchedUser) {
-      openNotice("Không tìm thấy tên đăng nhập này trong hệ thống.", "error");
-      return;
-    }
+  const requestResult = await createPasswordResetRequest({
+    username: normalizedUsername,
+  });
 
-    const requestResult = await createPasswordResetRequest({
-      username: matchedUser.username,
-      displayName: matchedUser.displayName,
-      branch: matchedUser.branch,
-    });
+  if (!requestResult.success) {
+    openNotice(requestResult.message || "Không gửi được yêu cầu quên mật khẩu.", "error");
+    return;
+  }
 
-    if (!requestResult.success) {
-      openNotice(requestResult.message || "Không gửi được yêu cầu quên mật khẩu.", "error");
-      return;
-    }
-
-    openNotice(
-      requestResult.created
-        ? "Đã gửi yêu cầu quên mật khẩu. Admin sẽ thấy cảnh báo để cấp lại mật khẩu."
-        : "Yêu cầu quên mật khẩu đã tồn tại. Admin vẫn đang thấy cảnh báo để xử lý.",
-      "success",
-    );
-  };
-
+  openNotice(
+    requestResult.message || "Nếu tên đăng nhập tồn tại, admin sẽ thấy cảnh báo để cấp lại mật khẩu.",
+    "success",
+  );
+};
   return (
     <>
       <div
@@ -143,7 +134,12 @@ export default function Login() {
 
                   <hr className="my-4" />
                   <Form.Group>
-                    <Button type="button" variant="danger" className="w-100" onClick={handleForgotPassword}>
+                    <Button
+                      type="button"
+                      variant="danger"
+                      className="w-100"
+                      onClick={handleForgotPassword}
+                    >
                       Quên mật khẩu?
                     </Button>
                   </Form.Group>

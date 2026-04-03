@@ -1,5 +1,14 @@
+const crypto = require("crypto");
+
+const PASSWORD_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
 function makeRandomBlock(length = 4) {
-  return Math.random().toString(36).slice(2, 2 + length).toUpperCase();
+  let result = "";
+  for (let index = 0; index < length; index += 1) {
+    const randomIndex = crypto.randomInt(0, PASSWORD_ALPHABET.length);
+    result += PASSWORD_ALPHABET[randomIndex];
+  }
+  return result;
 }
 
 function generateUniquePassword() {

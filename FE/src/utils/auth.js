@@ -181,15 +181,12 @@ export async function findUserAccount(username) {
   if (!normalizedUsername) return null;
 
   try {
-    const result = await apiRequest(`/users/find?username=${encodeURIComponent(normalizedUsername)}`, {
-      auth: false,
-    });
+    const result = await apiRequest(`/users/find?username=${encodeURIComponent(normalizedUsername)}`);
     return sanitizeUser(result.data);
   } catch (_error) {
     return null;
   }
 }
-
 export async function createUserAccount(payload = {}) {
   try {
     const result = await apiRequest("/users", {

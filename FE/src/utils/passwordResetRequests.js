@@ -75,7 +75,8 @@ export async function createPasswordResetRequest(payload = {}) {
     return {
       success: true,
       created: Boolean(result.created),
-      request: normalizeRequest(result.request),
+      message: result.message || "Nếu tên đăng nhập tồn tại, yêu cầu quên mật khẩu đã được ghi nhận.",
+      request: result.request ? normalizeRequest(result.request) : null,
     };
   } catch (error) {
     return {
@@ -84,7 +85,6 @@ export async function createPasswordResetRequest(payload = {}) {
     };
   }
 }
-
 export async function resolvePasswordResetRequest(username) {
   const normalizedUsername = String(username || "").trim();
   if (!normalizedUsername) return null;
